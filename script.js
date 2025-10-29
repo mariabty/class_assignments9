@@ -68,18 +68,18 @@ startCountdown.addEventListener("click", () => {
   const date = document.getElementById("occasionDate").value;
   const time = document.getElementById("occasionTime").value;
   if(!date || !time) { timerDisplay.textContent = "Please enter date and time!"; return; }
-  const target = new Date(${date}T${time}).getTime();
+  const target = new Date(`${date}T${time}`).getTime();
   const occ = name || "Your Event";
   clearInterval(window.countdownInterval);
   window.countdownInterval = setInterval(() => {
     const now = new Date().getTime();
     const diff = target - now;
-    if(diff < 0) { timerDisplay.textContent = ${occ} has arrived!; clearInterval(window.countdownInterval); return; }
+    if(diff < 0) { timerDisplay.textContent = `${occ} has arrived!`; clearInterval(window.countdownInterval); return; }
     const d = Math.floor(diff / (1000*60*60*24));
     const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
     const m = Math.floor((diff % (1000*60*60)) / (1000*60));
     const s = Math.floor((diff % (1000*60)) / 1000);
-    timerDisplay.textContent = ${occ}: ${d}d ${h}h ${m}m ${s}s;
+    timerDisplay.textContent = `${occ}: ${d}d ${h}h ${m}m ${s}s`;
   }, 1000);
 });
 
@@ -122,14 +122,14 @@ document.getElementById("equal").addEventListener("click", () => {
 const soundBtn = document.getElementById("soundToggle");
 soundBtn.addEventListener("click", () => {
   soundOn = !soundOn;
-  soundBtn.textContent = soundOn ? "ð Sound: On" : "ð Sound: Off";
+  soundBtn.textContent = soundOn ? "🔈 Sound: On" : "🔇 Sound: Off";
 });
 
 // ===== THEME TOGGLE =====
 const themeToggle = document.getElementById("themeToggle");
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
-  themeToggle.textContent = document.body.classList.contains("dark") ? "âï¸ Light" : "ð Dark";
+  themeToggle.textContent = document.body.classList.contains("dark") ? "☀️ Light" : "🌙 Dark";
 });
 
 // ===== CONTACT FORM =====
